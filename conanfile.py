@@ -61,7 +61,7 @@ class CppgraphqlgenConan(ConanFile):
             return self._cmake
         self._cmake = CMake(self)
         self._cmake.definitions["GRAPHQL_BUILD_SCHEMAGEN"] = self.options.schemagen
-        self._cmake.definitions["GRAPHQL_UPDATE_SAMPLES"] = True
+        self._cmake.definitions["GRAPHQL_UPDATE_SAMPLES"] = False
         self._cmake.definitions["GRAPHQL_BUILD_CLIENTGEN"] = self.options.clientgen
         self._cmake.definitions["GRAPHQL_UPDATE_VERSION"] = True
         self._cmake.definitions["GRAPHQL_USE_RAPIDJSON"] = self.options.with_rapidjson
