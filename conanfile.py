@@ -90,7 +90,7 @@ class CppgraphqlgenConan(ConanFile):
                 self.cpp_info.components[name].libs = [name]
                 self.cpp_info.components[name].requires = requires
                 if self.settings.os == "Windows" and self.options.shared:
-                    self.cpp_info.components[name].append("GRAPHQL_DLLEXPORTS")
+                    self.cpp_info.components[name].defines.append("GRAPHQL_DLLEXPORTS")
 
         components = {
             "graphqlpeg": ["taocpp-pegtl::taocpp-pegtl"],
