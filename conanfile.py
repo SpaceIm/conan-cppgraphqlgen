@@ -78,6 +78,10 @@ class CppgraphqlgenConan(ConanFile):
         elif lazy_lt_semver(str(self.settings.compiler.version), minimum_version):
             raise ConanInvalidConfiguration("{} {} requires C++17, which your compiler does not support.".format(self.name, self.version))
 
+        if self.options.schemagen or self.options.clientgen:
+            if self.options["boost"].header_only or self.options["boost"].without_program_options:
+                raise ConanInvalidConfiguration("{} requires non header-only boost with program_options component".format(self.name))
+
     def source(self):
         tools.get(**self.conan_data["sources"][self.version],
                   destination=self._source_subfolder, strip_root=True)
@@ -140,4 +144,4 @@ class CppgraphqlgenConan(ConanFile):
             # TODO:
             # - add executables CMake imported targets
             # - boost is not a dependency of cppgraphqlgen libs
-            self.cpp_info.components["graphqlservice"].requires.append("boost::boost")
+            self.cpp_info.components["graphqlservice"].requires.append("boost::program_options")
