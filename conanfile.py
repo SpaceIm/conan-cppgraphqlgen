@@ -58,7 +58,7 @@ class CppgraphqlgenConan(ConanFile):
         return {
             "Visual Studio": "15.7",
             "gcc": "8",
-            "clang": "6",
+            "clang": "6.0",
             "apple-clang": "10"
         }
 
