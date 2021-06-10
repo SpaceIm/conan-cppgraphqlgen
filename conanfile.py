@@ -57,7 +57,7 @@ class CppgraphqlgenConan(ConanFile):
     def _compilers_minimum_version(self):
         return {
             "Visual Studio": "15.7",
-            "gcc": "8",
+            "gcc": "7",
             "clang": "6.0",
             "apple-clang": "10"
         }
